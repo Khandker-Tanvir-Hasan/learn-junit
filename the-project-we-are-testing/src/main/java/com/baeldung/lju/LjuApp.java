@@ -56,8 +56,7 @@ public class LjuApp {
         // create Task and add Assignee
         Worker worker = new Worker("john@test.com", "John", "Doe");
         workerService.create(worker);
-        Task newTask2 = new Task("Task 2", "Task 2 Description", LocalDate.now()
-            .minusDays(5), newCampaign, TaskStatus.TO_DO, null);
+        Task newTask2 = new Task("Task 2", "Task 2 Description", LocalDate.now().minusDays(5), newCampaign, TaskStatus.TO_DO, null);
         taskService.create(newTask2);
         taskService.updateAssignee(newTask2.getId(), worker);
 
