@@ -24,6 +24,7 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -46,6 +47,23 @@
         </license>
     </licenses>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire.version}</version>
+                <configuration>
+                    <includes>
+                        <include>
+                            *UnitTest.java
+                        </include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <!-- non-dependencies -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -55,6 +73,9 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <junit-jupiter.version>5.10.1</junit-jupiter.version>
-        <logback.version>1.4.11</logback.version>
+        <logback.version>1.5.13</logback.version>
+        <maven-surefire.version>3.5.4</maven-surefire.version>
     </properties>
+
+
 </project>
