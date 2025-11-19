@@ -12,11 +12,12 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 public class InMemoryCampaignRepositoryUnitTest {
 
-    final static Logger logger = LoggerFactory.getLogger(LifecycleMethodsAndResourceHandlingUnitTest.class);
+    public final static Logger logger = LoggerFactory.getLogger(LifecycleMethodsAndResourceHandlingUnitTest.class);
     CampaignRepository campaignRepository;
 
     @BeforeEach
@@ -44,4 +45,18 @@ public class InMemoryCampaignRepositoryUnitTest {
         // then
         Assertions.assertEquals("C-1-CODE", retrievedCampaign.get().getCode());
     }
+
+    // Overriding data source for specific scenario
+    @Test
+    void givenEmptyDataSource_whenFindAllCampaigns_thenEmptyListRetrieved() {
+        // given
+        campaignRepository = new InMemoryCampaignRepository(new HashSet<>());
+
+        // when
+        List<Campaign> retrievedCampaigns = campaignRepository.findAll();
+
+        // then
+        Assertions.assertEquals(true, retrievedCampaigns.isEmpty());
+    }
+
 }
