@@ -20,20 +20,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(MockitoExtension.class)
 public class CampaignServiceUnitTest {
 
-
-
+    /***
+     *
+     * This creates fake instance of the class
+     */
     @Mock
     private CampaignRepository campaignRepository;
 
+    /***
+     * this creates real instance of a class and the fake (mock object) is injected into it
+     */
     @InjectMocks
     private DefaultCampaignService service;
-
-
-    @BeforeEach
-    void setUp() {
-        this.campaignRepository = Mockito.mock(CampaignRepository.class);
-        this.service = new DefaultCampaignService(campaignRepository);
-    }
 
     @Test
     public void givenCampaignId_whenClosingACampaign_thenReturnExpectedResult() {
